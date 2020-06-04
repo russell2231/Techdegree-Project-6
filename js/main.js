@@ -14,7 +14,7 @@ const overlay = document.querySelector('#overlay');
 let missed = 0;
 const phraseArray = getRandomPhraseAsArray(phrases);
 
-// Random Phrase
+// Get Random Phrase
 function getRandomPhraseAsArray(arr) {
 	const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
 	const randomPhraseArr = randomPhrase.split('');
@@ -63,7 +63,7 @@ function checkWin() {
 			overlay.appendChild(result);
 			overlay.className = 'win';
 			overlay.style.display = 'flex';
-			startBtn.textContent = 'Try Again?';
+			startBtn.textContent = 'Play Again?';
 		}, 2000);
 	} else if (missed > 4) {
 		setTimeout(() => {
@@ -72,14 +72,14 @@ function checkWin() {
 			overlay.className = 'lose';
 			overlay.style.display = 'flex';
 			startBtn.textContent = 'Try Again?';
-		}, 2000);
+		}, 1000);
 	}
 }
 
 // Start Game
 startBtn.addEventListener('click', function() {
 	// reload page to play again
-	if (startBtn.textContent === 'Try Again?') {
+	if (startBtn.textContent === 'Try Again?' || startBtn.textContent === 'Play Again?') {
 		location.reload();
 	}
 	overlay.style.display = 'none';
