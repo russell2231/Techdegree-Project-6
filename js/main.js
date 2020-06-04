@@ -58,17 +58,21 @@ function checkWin() {
 	const result = document.createElement('h3');
 
 	if (guessedLetters.length === phraseLetters.length) {
-		result.appendChild(document.createTextNode('You Win!!!'));
-		overlay.appendChild(result);
-		overlay.className = 'win';
-		overlay.style.display = 'flex';
-		startBtn.textContent = 'Try Again?';
+		setTimeout(() => {
+			result.appendChild(document.createTextNode('You Win!!!'));
+			overlay.appendChild(result);
+			overlay.className = 'win';
+			overlay.style.display = 'flex';
+			startBtn.textContent = 'Try Again?';
+		}, 2000);
 	} else if (missed > 4) {
-		result.appendChild(document.createTextNode('You Lose!'));
-		overlay.appendChild(result);
-		overlay.className = 'lose';
-		overlay.style.display = 'flex';
-		startBtn.textContent = 'Try Again?';
+		setTimeout(() => {
+			result.appendChild(document.createTextNode('You Lose!'));
+			overlay.appendChild(result);
+			overlay.className = 'lose';
+			overlay.style.display = 'flex';
+			startBtn.textContent = 'Try Again?';
+		}, 2000);
 	}
 }
 
@@ -93,6 +97,7 @@ keyboard.addEventListener('click', function(e) {
 		letter.disabled = true;
 		if (letterFound == null) {
 			score[missed].setAttribute('src', '../images/lostHeart.png');
+			letter.style.background = '#ff8906';
 			missed += 1;
 		}
 		checkWin();
